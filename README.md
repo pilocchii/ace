@@ -1,6 +1,14 @@
 # ACE - Audica Cues Editor
 This is a cross-platform Audica custom map editor build using Electron
 
+**This repository is still in very early development. It does not do anything yet.**
+
+# Problems?
+Please open a Github issue with a detailed description of the issue you're having. Feel free to contribute and make a pull request!
+
+# Contributing
+Nothing here yet
+
 # Thanks
 [Electron Quick Start repo](https://github.com/electron/electron-quick-start) 
 
@@ -15,4 +23,3 @@ This is a cross-platform Audica custom map editor build using Electron
 
 ## License
 TBD
-
