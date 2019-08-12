@@ -1,6 +1,5 @@
 import { CueFactory } from "./cue";
 import { expect } from 'chai';
-import { AssertionError } from "assert";
 
 describe('CueFactory', () => {
     

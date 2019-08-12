@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <link href="./dist/css/index.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <!-- <h1>Hello World!</h1> -->
@@ -10,24 +11,31 @@
     <!-- We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script> -->
-    <canvas id="scroll"></canvas>
-    <canvas id="editor"></canvas>
 
-    <div id="palette">
-      <p>Palette</p>
-      <img id="target">
-      <img id="hold">
-      <img id="path-start">
-      <img id="path-node">
-      <img id="slot-horizontal">
-      <img id="slot-vertical">
+    <div id="app">
+      <div id="palette">
+        <p>Palette</p>
+        <div id="palette-icons">
+          <img id="target" class="note" src="./img/pause-play.svg" onclick="console.log('target clicked');"></img>
+          <img id="hold" class="note" src="./img/pause-play.svg" onclick="console.log('hold clicked');"></img>
+          <img id="path-start" class="note" src="./img/pause-play.svg" onclick="console.log('path-start clicked');"></img>
+          <img id="path-node" class="note" src="./img/pause-play.svg" onclick="console.log('path-node clicked');"></img>
+          <img id="slot-horizontal" class="note" src="./img/pause-play.svg" onclick="console.log('slot-horizontal clicked');"></img>
+          <img id="slot-vertical" class="note" src="./img/pause-play.svg" onclick="console.log('slot-vertical clicked');"></img>
+        </div>
+      </div>
+
+      <div id="workspace">
+        <canvas id="scroll"></canvas>
+        <canvas id="editor"></canvas>
+
+        <div id="controls">
+          <p>Controls</p>
+          <div id="controls-icons">
+            <img id="playback-play-pause" class="control" src="./img/pause-play.svg" onclick="console.log('playback-play-pause clicked');"></img>
+          </div>
+      </div>
     </div>
-
-    <div id="controls">
-      <p>Controls</p>
-      <object id="playback-play-pause" data="./img/pause-play.svg"></object>
-    </div>
-
   </body>
 
   <script>
