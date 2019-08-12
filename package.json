@@ -7,7 +7,8 @@
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "start": "npm run build && electron ./dist/main.js",
-    "dev": "npm run watch & electron ./dist/main.js"
+    "dev": "npm run watch & electron ./dist/main.js",
+    "test": "mocha --recursive -r ts-node/register -r chai/register-expect \"src/**/*.test.ts\""
   },
   "repository": "https://github.com/saerith/ace",
   "keywords": [
@@ -21,9 +22,18 @@
   "author": "Alyssa Ingersoll & Danielle Weisz",
   "license": "tbd",
   "devDependencies": {
+    "@types/chai": "^4.2.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.1",
+    "chai": "^4.2.0",
     "electron": "^6.0.1",
     "electron-reload": "^1.5.0",
+    "mocha": "^6.2.0",
+    "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "electron-log": "^3.0.7"
   }
 }
