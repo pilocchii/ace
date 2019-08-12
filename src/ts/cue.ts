@@ -1,4 +1,5 @@
 import log from "electron-log";
+import {Serializable} from "./serde";
 
 export interface Cue {
     tick: number;
@@ -25,7 +26,7 @@ interface OptionalCue {
     behavior?: number;
 }
 
-export class Cue implements Cue {
+export class Cue implements Cue, Serializable {
     constructor(
         options: OptionalCue
     ) {
@@ -36,6 +37,19 @@ export class Cue implements Cue {
         this.gridOffset = options.gridOffset;
         this.handType = options.handType;
         this.behavior = options.behavior;
+    }
+
+    serialize(): string {
+        return JSON.stringify(this, null, 4);
+    }
+
+    static deserialize(json: string): Cue {
+        return JSON.parse(json);
+    }
+
+    // an alias for readability
+    static from(json: string): Cue {
+        return new Cue(this.deserialize(json));
     }
 }
 
@@ -98,7 +112,7 @@ export class CueFactory {
         }) 
     }
 
-    build() {
+    build(): Cue {
         if (
             !Number.isInteger(this.options.tick)
             || !Number.isInteger(this.options.tickLength)
@@ -109,9 +123,9 @@ export class CueFactory {
             || !Number.isInteger(this.options.gridOffset.x)
             || !Number.isInteger(this.options.gridOffset.y)
         ) {
-            throw Error(`Building Cue failed, one of its properties is not the proper type: {this.options}`);
+            throw Error(`Building Cue failed, one of its properties is not the proper type: ${this.options}`);
         }
-        return this.options;
+        return new Cue(this.options);
     }
 
 }
