@@ -1,18 +1,18 @@
 import log from "electron-log";
 
 export interface Cue {
-    tick: number
-    tickLength: number
-    pitch: number
-    velocity: number
-    gridOffset: GridOffset
-    handType: number
-    behavior: number
+    tick: number;
+    tickLength: number;
+    pitch: number;
+    velocity: number;
+    gridOffset: GridOffset;
+    handType: number;
+    behavior: number;
 }
 
 export interface GridOffset {
-    x: number
-    y: number
+    x: number;
+    y: number;
 }
 
 interface OptionalCue {
@@ -27,13 +27,6 @@ interface OptionalCue {
 
 export class Cue implements Cue {
     constructor(
-        // tick: number,
-        // tickLength: number,
-        // pitch: number,
-        // velocity: number,
-        // gridOffset: GridOffset,
-        // handType: number,
-        // behavior: number
         options: OptionalCue
     ) {
         this.tick = options.tick;
@@ -106,9 +99,19 @@ export class CueFactory {
     }
 
     build() {
-        return new Cue({
-            ...this.options
-        })
+        if (
+            !Number.isInteger(this.options.tick)
+            || !Number.isInteger(this.options.tickLength)
+            || !Number.isInteger(this.options.pitch)
+            || !Number.isInteger(this.options.velocity)
+            || !Number.isInteger(this.options.handType)
+            || !Number.isInteger(this.options.behavior)
+            || !Number.isInteger(this.options.gridOffset.x)
+            || !Number.isInteger(this.options.gridOffset.y)
+        ) {
+            throw Error(`Building Cue failed, one of its properties is not the proper type: {this.options}`);
+        }
+        return this.options;
     }
 
 }
